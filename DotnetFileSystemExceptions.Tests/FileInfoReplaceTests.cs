@@ -1,3 +1,5 @@
+using System.Runtime.InteropServices;
+
 namespace DotnetFileSystemExceptions.Tests;
 
 public class FileInfoReplaceTests
@@ -7,15 +9,35 @@ public class FileInfoReplaceTests
 	{
 		using (Initialize.TemporaryDirectory())
 		{
-			var destinationPath = Path.Combine(Directory.GetCurrentDirectory(),
+			string destinationPath = Path.Combine(Directory.GetCurrentDirectory(),
 				"not-existing-directory",
 				"destination.txt");
-			var sut = new FileInfo("some-path.txt");
+			FileInfo sut = new("some-path.txt");
 			sut.Create();
 
-			var exception = Record.Exception(() => sut.Replace(destinationPath, null));
+			Exception? exception = Record.Exception(() => sut.Replace(destinationPath, null));
 
-			Assert.IsType<DirectoryNotFoundException>(exception);
+			if (RuntimeInformation.IsOSPlatform(OSPlatform.Linux))
+			{
+				if (Test.IsNet7)
+				{
+					Assert.IsType<DirectoryNotFoundException>(exception);
+				}
+				else
+				{
+					Assert.IsType<FileNotFoundException>(exception);
+				}
+			}
+
+			if (RuntimeInformation.IsOSPlatform(OSPlatform.OSX))
+			{
+				Assert.IsType<FileNotFoundException>(exception);
+			}
+
+			if (RuntimeInformation.IsOSPlatform(OSPlatform.Windows))
+			{
+				Assert.IsType<DirectoryNotFoundException>(exception);
+			}
 		}
 	}
 
@@ -26,13 +48,13 @@ public class FileInfoReplaceTests
 		{
 			Directory.CreateDirectory(Path.Combine(Directory.GetCurrentDirectory(),
 				"existing-directory"));
-			var destinationPath = Path.Combine(Directory.GetCurrentDirectory(),
+			string destinationPath = Path.Combine(Directory.GetCurrentDirectory(),
 				"existing-directory",
 				"destination.txt");
-			var sut = new FileInfo("some-path.txt");
+			FileInfo sut = new("some-path.txt");
 			sut.Create();
 
-			var exception = Record.Exception(() => sut.Replace(destinationPath, null));
+			Exception? exception = Record.Exception(() => sut.Replace(destinationPath, null));
 
 			Assert.IsType<FileNotFoundException>(exception);
 		}
