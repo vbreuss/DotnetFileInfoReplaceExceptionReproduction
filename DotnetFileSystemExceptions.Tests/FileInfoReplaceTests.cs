@@ -48,12 +48,26 @@ public class FileInfoReplaceTests
 
 			if (RuntimeInformation.IsOSPlatform(OSPlatform.Linux))
 			{
-				Assert.IsType<FileNotFoundException>(exception);
+				if (Test.IsNet7)
+				{
+					Assert.IsType<DirectoryNotFoundException>(exception);
+				}
+				else
+				{
+					Assert.IsType<FileNotFoundException>(exception);
+				}
 			}
 
 			if (RuntimeInformation.IsOSPlatform(OSPlatform.OSX))
 			{
-				Assert.IsType<FileNotFoundException>(exception);
+				if (Test.IsNet7)
+				{
+					Assert.IsType<DirectoryNotFoundException>(exception);
+				}
+				else
+				{
+					Assert.IsType<FileNotFoundException>(exception);
+				}
 			}
 
 			if (RuntimeInformation.IsOSPlatform(OSPlatform.Windows))
