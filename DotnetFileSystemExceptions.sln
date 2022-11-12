@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.4.33103.184
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DotnetFileSystemExceptions.Tests", "DotnetFileSystemExceptions.Tests\DotnetFileSystemExceptions.Tests.csproj", "{87EC9175-D554-4A9A-8910-3A119ACB4E21}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{87EC9175-D554-4A9A-8910-3A119ACB4E21}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{87EC9175-D554-4A9A-8910-3A119ACB4E21}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{87EC9175-D554-4A9A-8910-3A119ACB4E21}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{87EC9175-D554-4A9A-8910-3A119ACB4E21}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {D63FA2A0-1154-4F1E-B0D0-6AF3B81CFF61}
+	EndGlobalSection
+EndGlobal
