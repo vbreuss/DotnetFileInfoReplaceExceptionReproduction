@@ -1,3 +1,4 @@
+using DotnetFileSystemExceptions.Tests.Helpers;
 using System.Runtime.InteropServices;
 
 namespace DotnetFileSystemExceptions.Tests;

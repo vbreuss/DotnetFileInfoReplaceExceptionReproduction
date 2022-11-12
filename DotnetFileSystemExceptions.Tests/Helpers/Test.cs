@@ -1,4 +1,4 @@
-namespace DotnetFileSystemExceptions.Tests;
+namespace DotnetFileSystemExceptions.Tests.Helpers;
 
 public static class Test
 {

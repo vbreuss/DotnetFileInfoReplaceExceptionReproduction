@@ -1,6 +1,6 @@
 using System.Runtime.InteropServices;
 
-namespace DotnetFileSystemExceptions.Tests
+namespace DotnetFileSystemExceptions.Tests.Helpers
 {
 	public static class Initialize
 	{
@@ -65,8 +65,8 @@ namespace DotnetFileSystemExceptions.Tests
 				directory.Attributes = FileAttributes.Normal;
 
 				foreach (var info in directory.EnumerateFiles(
-					         "*",
-					         SearchOption.TopDirectoryOnly))
+							 "*",
+							 SearchOption.TopDirectoryOnly))
 				{
 					info.Attributes = FileAttributes.Normal;
 					info.Delete();
@@ -74,9 +74,9 @@ namespace DotnetFileSystemExceptions.Tests
 
 				if (recursive)
 					foreach (var info in
-					         directory.EnumerateDirectories(
-						         "*",
-						         SearchOption.TopDirectoryOnly))
+							 directory.EnumerateDirectories(
+								 "*",
+								 SearchOption.TopDirectoryOnly))
 						ForceDeleteDirectory(info.FullName, recursive);
 
 				Directory.Delete(path);
