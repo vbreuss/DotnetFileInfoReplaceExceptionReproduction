@@ -26,11 +26,11 @@ public class FileCopyTests
 			{
 #if NET8_0_OR_GREATER
 				sourceLastAccessTime.Should()
-					.BeOnOrAfter(creationTimeStart.AddMilliseconds(-40)).And
-					.BeOnOrBefore(creationTimeEnd);
+					.BeOnOrAfter(updateTime.AddMilliseconds(-40));
 #else
 				sourceLastAccessTime.Should()
-					.BeOnOrAfter(updateTime.AddMilliseconds(-40));
+					.BeOnOrAfter(creationTimeStart.AddMilliseconds(-40)).And
+					.BeOnOrBefore(creationTimeEnd);
 #endif
 				sourceLastAccessTime.Should()
 					.BeOnOrAfter(creationTimeStart.AddMilliseconds(-40)).And
