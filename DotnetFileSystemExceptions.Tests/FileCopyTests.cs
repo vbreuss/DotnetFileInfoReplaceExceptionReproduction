@@ -4,7 +4,7 @@ using System.Runtime.InteropServices;
 
 namespace DotnetFileSystemExceptions.Tests;
 
-public class FileMoveTests
+public class FileCopyTests
 {
 	[Fact]
 	public void File_Copy_ShouldSetAccessTime()
