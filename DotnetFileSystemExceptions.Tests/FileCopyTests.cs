@@ -62,7 +62,6 @@ public class FileCopyTests
 				sourceLastAccessTime.Should()
 					.BeOnOrAfter(updateTime.AddMilliseconds(-40));
 			}
-
 		}
 	}
 }
