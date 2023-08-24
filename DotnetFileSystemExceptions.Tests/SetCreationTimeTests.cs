@@ -3,6 +3,7 @@ using System.Runtime.InteropServices;
 
 namespace DotnetFileSystemExceptions.Tests;
 
+[Collection("Sequential")]
 public class SetCreationTimeTests
 {
 	[Fact]
@@ -18,7 +19,7 @@ public class SetCreationTimeTests
 
 			if (RuntimeInformation.IsOSPlatform(OSPlatform.Linux))
 			{
-				if (Test.IsNet7)
+				if (Test.IsNet7OrGreater)
 				{
 					Assert.IsType<FileNotFoundException>(exception);
 				}
