@@ -14,6 +14,12 @@ public static class Test
 #else
 		=> false;
 #endif
+	public static bool IsNet7OrGreater
+#if NET7_0_OR_GREATER
+		=> true;
+#else
+		=> false;
+#endif
 	public static bool IsNet6
 #if NET6_0
 		=> true;
