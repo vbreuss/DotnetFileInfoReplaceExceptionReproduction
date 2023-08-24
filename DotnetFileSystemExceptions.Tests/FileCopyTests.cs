@@ -22,12 +22,21 @@ public class FileCopyTests
 			File.Copy(source, destination);
 
 			DateTime sourceLastAccessTime = File.GetLastAccessTimeUtc(source);
-			DateTime destinationLastAccessTime = File.GetLastAccessTimeUtc(destination);
+			if (RuntimeInformation.IsOSPlatform(OSPlatform.OSX))
+			{
 #if NET8_0_OR_GREATER
-			if (RuntimeInformation.IsOSPlatform(OSPlatform.Windows))
+				sourceLastAccessTime.Should()
+					.BeOnOrAfter(creationTimeStart.AddMilliseconds(-40)).And
+					.BeOnOrBefore(creationTimeEnd);
 #else
-			if (!RuntimeInformation.IsOSPlatform(OSPlatform.Linux))
+				sourceLastAccessTime.Should()
+					.BeOnOrAfter(updateTime.AddMilliseconds(-40));
 #endif
+				sourceLastAccessTime.Should()
+					.BeOnOrAfter(creationTimeStart.AddMilliseconds(-40)).And
+					.BeOnOrBefore(creationTimeEnd);
+			}
+			else if (RuntimeInformation.IsOSPlatform(OSPlatform.Windows))
 			{
 				sourceLastAccessTime.Should()
 					.BeOnOrAfter(creationTimeStart.AddMilliseconds(-40)).And
@@ -58,7 +67,6 @@ public class FileCopyTests
 			fileInfo.CopyTo(destination);
 
 			DateTime sourceLastAccessTime = File.GetLastAccessTimeUtc(source);
-			DateTime destinationLastAccessTime = File.GetLastAccessTimeUtc(destination);
 #if NET8_0_OR_GREATER
 			if (RuntimeInformation.IsOSPlatform(OSPlatform.Windows))
 #else
