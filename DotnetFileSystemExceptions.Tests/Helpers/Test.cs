@@ -2,6 +2,12 @@ namespace DotnetFileSystemExceptions.Tests.Helpers;
 
 public static class Test
 {
+	public static bool IsNet8
+#if NET8_0
+		=> true;
+#else
+		=> false;
+#endif
 	public static bool IsNet7
 #if NET7_0
 		=> true;

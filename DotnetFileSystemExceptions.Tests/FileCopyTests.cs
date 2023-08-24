@@ -4,6 +4,7 @@ using System.Runtime.InteropServices;
 
 namespace DotnetFileSystemExceptions.Tests;
 
+[Collection("Sequential")]
 public class FileCopyTests
 {
 	[Fact]
